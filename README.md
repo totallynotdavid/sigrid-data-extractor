@@ -1,6 +1,8 @@
 # Extractor de Datos SIGRID
 
-Este proyecto proporciona una herramienta para extraer datos de SIGRID, la base de datos de CENEPRED para desastres en Perú, y guardarlos en formatos CSV y XLSX.
+Este proyecto proporciona una herramienta para extraer datos de SIGRID, la base de datos de CENEPRED para desastres en Perú (específicamente huaicos, otros endpoints no son considerados), y guardarlos en formatos CSV y XLSX.
+
+Nota: ¡Otros endpoints pueden o deberían de ser añadidos en versiones futuras! Acepto PRs si estás dispuesto a colaborar.
 
 ## Requisitos
 
