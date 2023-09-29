@@ -76,34 +76,12 @@ def save_to_excel(data, file_name):
     df = pd.DataFrame(data)
     df.to_excel(file_name, index=False, engine='openpyxl')
 
-def main():
-    user_input = input("¿Desea ingresar su propia URL completa con parámetros? (s/n): ")
-    if user_input.lower() == 's':
-        url = input("Ingrese la URL completa: ")
-    else:
-        params = {
-            "f": "json",
-            "where": "1%3D1",
-            "returnGeometry": "true",
-            "spatialRel": "esriSpatialRelIntersects",
-            "geometryType": "esriGeometryPolygon",
-            "inSR": "102100",
-            "outFields": "*",
-            "outSR": "102100",
-            "geometry": {
-                "rings": [[
-                    [-8974049.114116076, -2211885.176650285],
-                    [-8974049.114116076, 128922.37755433063],
-                    [-7721704.842692081, 128922.37755433063],
-                    [-7721704.842692081, -2211885.176650285],
-                    [-8974049.114116076, -2211885.176650285]
-                ]],
-                "spatialReference": {"wkid": 102100}
-            }
-        }
-        url = build_url(params)
-    
-    # Obtener y procesar los datos
+def extract_data(url):
+    """
+    Obtener y procesar los datos
+
+    :param url: URL de la cual obtener los datos.
+    """
     data = fetch_data(url)
     processed_data = process_data(data)
 
@@ -111,8 +89,38 @@ def main():
     save_to_excel(processed_data, FILE_NAME_EXCEL)
 
     print(f"Datos guardados en {FILE_NAME_CSV} y {FILE_NAME_EXCEL}.")
-
+    
     return processed_data
+
+def main(url=None):
+    if url is None:
+        user_input = input("¿Desea ingresar su propia URL completa con parámetros? (s/n): ")
+        if user_input.lower() == 's':
+            url = input("Ingrese la URL completa: ")
+        else:
+            params = {
+                "f": "json",
+                "where": "1%3D1",
+                "returnGeometry": "true",
+                "spatialRel": "esriSpatialRelIntersects",
+                "geometryType": "esriGeometryPolygon",
+                "inSR": "102100",
+                "outFields": "*",
+                "outSR": "102100",
+                "geometry": {
+                    "rings": [[
+                        [-8974049.114116076, -2211885.176650285],
+                        [-8974049.114116076, 128922.37755433063],
+                        [-7721704.842692081, 128922.37755433063],
+                        [-7721704.842692081, -2211885.176650285],
+                        [-8974049.114116076, -2211885.176650285]
+                    ]],
+                    "spatialReference": {"wkid": 102100}
+                }
+            }
+            url = build_url(params)
+    
+    extract_data(url)
 
 if __name__ == "__main__":
     main()
