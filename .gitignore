@@ -1,0 +1,5 @@
+*.csv
+*.xslx
+
+# Ignore pycache
+sigrid-data-extractor/__pycache__/
