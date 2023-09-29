@@ -27,9 +27,22 @@ def fetch_data(url):
     :param url: URL de la cual obtener los datos.
     :return: Datos obtenidos.
     """
-    response = requests.get(url)
-    data = response.json()
-    return data["features"]
+    offset = 0
+    all_data = []
+    
+    while True:
+        paginated_url = url + f"&resultOffset={offset}&resultRecordCount=1000"
+        response = requests.get(paginated_url)
+        data = response.json()
+        features = data.get("features")
+        
+        if not features:
+            break
+        
+        all_data.extend(features)
+        offset += 1000
+    
+    return all_data
 
 def process_data(data):
     """
