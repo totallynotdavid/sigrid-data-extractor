@@ -112,5 +112,7 @@ def main():
 
     print(f"Datos guardados en {FILE_NAME_CSV} y {FILE_NAME_EXCEL}.")
 
+    return processed_data
+
 if __name__ == "__main__":
     main()

@@ -5,7 +5,7 @@ description = ""
 authors = ["David Duran <dadch1404@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "sigrid-data-extractor"}]
+packages = [{include = "sigrid_data_extractor"}]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.13"
@@ -17,7 +17,7 @@ requests = "^2.31.0"
 pytest = "^7.4.2"
 
 [tool.poetry.scripts]
-start = "sigrid-data-extractor.extractor:main"
+start = "sigrid_data_extractor.extractor:main"
 
 [build-system]
 requires = ["poetry-core"]

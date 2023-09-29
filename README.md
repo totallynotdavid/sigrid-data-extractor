@@ -14,7 +14,7 @@ Nota: ¡Otros endpoints pueden o deberían de ser añadidos en versiones futuras
 1. Clona este repositorio en tu máquina local.
     ```sh
     git clone https://github.com/dadch1404/sigrid-data-extractor.git
-    cd sigrid-data-extractor
+    cd sigrid_data_extractor
     ```
 2. Instala las dependencias del proyecto.
     ```sh
@@ -23,7 +23,7 @@ Nota: ¡Otros endpoints pueden o deberían de ser añadidos en versiones futuras
 
 ## Uso
 
-1. Abre el archivo `extractor.py` ubicado en la carpeta `sigrid-data-extractor`.
+1. Abre el archivo `extractor.py` ubicado en la carpeta `sigrid_data_extractor`.
 2. Modifica los parámetros en la sección de parámetros del script según tus necesidades. Por ejemplo, puedes cambiar la región, el tipo de desastre, etc.
 3. Guarda los cambios y ejecuta el script.
     ```sh

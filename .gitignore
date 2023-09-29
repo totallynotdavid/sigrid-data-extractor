@@ -3,4 +3,5 @@
 *.xlsx
 
 # Ignore pycache
-sigrid-data-extractor/__pycache__/
+sigrid_data_extractor/__pycache__/
+.ipynb_checkpoints/
