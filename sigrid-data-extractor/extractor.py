@@ -64,32 +64,34 @@ def save_to_excel(data, file_name):
     df.to_excel(file_name, index=False, engine='openpyxl')
 
 def main():
-    params = {
-        "f": "json",
-        "where": "1%3D1",
-        "returnGeometry": "true",
-        "spatialRel": "esriSpatialRelIntersects",
-        "geometryType": "esriGeometryPolygon",
-        "inSR": "102100",
-        "outFields": "*",
-        "outSR": "102100",
-        "geometry": {
-            "rings": [[
-                [-8974049.114116076, -2211885.176650285],
-                [-8974049.114116076, 128922.37755433063],
-                [-7721704.842692081, 128922.37755433063],
-                [-7721704.842692081, -2211885.176650285],
-                [-8974049.114116076, -2211885.176650285]
-            ]],
-            "spatialReference": {"wkid": 102100}
+    user_input = input("¿Desea ingresar su propia URL completa con parámetros? (s/n): ")
+    if user_input.lower() == 's':
+        url = input("Ingrese la URL completa: ")
+    else:
+        params = {
+            "f": "json",
+            "where": "1%3D1",
+            "returnGeometry": "true",
+            "spatialRel": "esriSpatialRelIntersects",
+            "geometryType": "esriGeometryPolygon",
+            "inSR": "102100",
+            "outFields": "*",
+            "outSR": "102100",
+            "geometry": {
+                "rings": [[
+                    [-8974049.114116076, -2211885.176650285],
+                    [-8974049.114116076, 128922.37755433063],
+                    [-7721704.842692081, 128922.37755433063],
+                    [-7721704.842692081, -2211885.176650285],
+                    [-8974049.114116076, -2211885.176650285]
+                ]],
+                "spatialReference": {"wkid": 102100}
+            }
         }
-    }
+        url = build_url(params)
     
-    # Construir URL para obtener datos
-    url = build_url(params)
+    # Obtener y procesar los datos
     data = fetch_data(url)
-
-    # Procesar los datos obtenidos
     processed_data = process_data(data)
 
     save_to_csv(processed_data, FILE_NAME_CSV)
